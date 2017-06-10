@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     let stillImageOutput = AVCaptureStillImageOutput()
     var captureDevice:AVCaptureDevice?
 
+    @IBOutlet weak var cameraView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         captureSession.sessionPreset = AVCaptureSession.Preset.high
@@ -41,8 +43,8 @@ class ViewController: UIViewController {
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         
-        self.view.layer.addSublayer(previewLayer)
-        previewLayer.frame = self.view.layer.frame
+        self.cameraView.layer.addSublayer(previewLayer)
+        previewLayer.frame = self.cameraView.layer.frame
         captureSession.startRunning()
         print("Camera Running")
     }
