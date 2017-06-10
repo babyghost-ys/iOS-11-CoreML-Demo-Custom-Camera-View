@@ -7,17 +7,44 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
+    
+    let captureSession = AVCaptureSession()
+    var previewLayer:AVCaptureVideoPreviewLayer?
+    let stillImageOutput = AVCaptureStillImageOutput()
+    var captureDevice:AVCaptureDevice?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        captureSession.sessionPreset = AVCaptureSession.Preset.high
+        captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back)
+        beginSession()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func beginSession() {
+        
+        do {
+            try captureSession.addInput(AVCaptureDeviceInput(device: captureDevice!))
+            stillImageOutput.outputSettings = [AVVideoCodecKey:AVVideoCodecJPEG]
+            
+            if captureSession.canAddOutput(stillImageOutput) {
+                captureSession.addOutput(stillImageOutput)
+            }
+            
+        }
+        catch {
+            print("error: \(error.localizedDescription)")
+        }
+        
+        
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        
+        self.view.layer.addSublayer(previewLayer)
+        previewLayer.frame = self.view.layer.frame
+        captureSession.startRunning()
+        print("Camera Running")
     }
 
 
