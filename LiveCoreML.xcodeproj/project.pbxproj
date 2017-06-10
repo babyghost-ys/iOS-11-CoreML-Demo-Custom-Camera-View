@@ -12,6 +12,7 @@
 		AA8588121EECA8010029C073 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA8588101EECA8010029C073 /* Main.storyboard */; };
 		AA8588141EECA8010029C073 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA8588131EECA8010029C073 /* Assets.xcassets */; };
 		AA8588171EECA8010029C073 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA8588151EECA8010029C073 /* LaunchScreen.storyboard */; };
+		AAA07B501EECB1AC000A02B4 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AAA07B4F1EECB1AC000A02B4 /* Inceptionv3.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		AA8588131EECA8010029C073 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA8588161EECA8010029C073 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA8588181EECA8010029C073 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAA07B4F1EECB1AC000A02B4 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Inceptionv3.mlmodel; path = ../../../../Desktop/Inceptionv3.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				AA85880C1EECA8010029C073 /* AppDelegate.swift */,
+				AAA07B4F1EECB1AC000A02B4 /* Inceptionv3.mlmodel */,
 				AA85880E1EECA8010029C073 /* ViewController.swift */,
 				AA8588101EECA8010029C073 /* Main.storyboard */,
 				AA8588131EECA8010029C073 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA85880F1EECA8010029C073 /* ViewController.swift in Sources */,
+				AAA07B501EECB1AC000A02B4 /* Inceptionv3.mlmodel in Sources */,
 				AA85880D1EECA8010029C073 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +282,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2S6B5447W9;
 				INFOPLIST_FILE = LiveCoreML/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.winandmac.LiveCoreML;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +297,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2S6B5447W9;
 				INFOPLIST_FILE = LiveCoreML/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.winandmac.LiveCoreML;
 				PRODUCT_NAME = "$(TARGET_NAME)";

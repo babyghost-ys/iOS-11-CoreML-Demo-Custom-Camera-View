@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import Vision
+import CoreML
 
 class ViewController: UIViewController {
     
@@ -35,7 +37,7 @@ class ViewController: UIViewController {
                     
                     if let cameraImage = UIImage(data: imageData) {
                         
-                        print("someImage doing...")
+                        self.makePredictions(image: cameraImage)
                     }
                 }
             })
@@ -64,6 +66,30 @@ class ViewController: UIViewController {
         previewLayer.frame = self.cameraView.layer.frame
         captureSession.startRunning()
         print("Camera Running")
+    }
+    
+    func makePredictions(image: UIImage) {
+        do {
+            let model = try VNCoreMLModel(for: Inceptionv3().model)
+            let request = VNCoreMLRequest(model: model, completionHandler: displayPredictions)
+            let handler = VNImageRequestHandler(cgImage: image.cgImage!)
+            try handler.perform([request])
+        } catch {
+            
+        }
+    }
+    
+    func displayPredictions(request: VNRequest, error: Error?) {
+        // Make sure we have a result
+        guard let results = request.results as? [VNClassificationObservation]
+            else { fatalError("Bad prediction") }
+        
+        print(results[0].identifier)
+        // Sort results by confidence
+        // results.sorted(by: {$0.confidence > $1.confidence})
+        
+        // Show prediction results
+        //topGuess.text = "\(results[0].identifier) - \(results[0].confidence * 100)%"
     }
 
 
