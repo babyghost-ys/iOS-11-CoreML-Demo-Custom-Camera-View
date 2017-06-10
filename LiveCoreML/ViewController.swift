@@ -29,14 +29,10 @@ class ViewController: UIViewController {
     
     
     @IBAction func tapToRecognise(_ sender: Any) {
-        
         if let videoConnection = stillImageOutput.connection(with: AVMediaType.video) {
-            
             stillImageOutput.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (CMSampleBuffer, Error) in
                 if let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(CMSampleBuffer!) {
-                    
                     if let cameraImage = UIImage(data: imageData) {
-                        
                         self.makePredictions(image: cameraImage)
                     }
                 }
@@ -49,7 +45,6 @@ class ViewController: UIViewController {
         do {
             try captureSession.addInput(AVCaptureDeviceInput(device: captureDevice!))
             stillImageOutput.outputSettings = [AVVideoCodecKey:AVVideoCodecJPEG]
-            
             if captureSession.canAddOutput(stillImageOutput) {
                 captureSession.addOutput(stillImageOutput)
             }
@@ -83,13 +78,6 @@ class ViewController: UIViewController {
         // Make sure we have a result
         guard let results = request.results as? [VNClassificationObservation]
             else { fatalError("Bad prediction") }
-        
-        print(results[0].identifier)
-        // Sort results by confidence
-        // results.sorted(by: {$0.confidence > $1.confidence})
-        
-        // Show prediction results
-        //topGuess.text = "\(results[0].identifier) - \(results[0].confidence * 100)%"
     }
 
 
