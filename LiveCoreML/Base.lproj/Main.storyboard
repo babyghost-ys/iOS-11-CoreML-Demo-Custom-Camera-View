@@ -4,10 +4,15 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Bold</string>
+            <string>AvenirNext-DemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -32,16 +37,42 @@
                                     <outletCollection property="gestureRecognizers" destination="N58-rt-61e" appends="YES" id="Q9c-dt-wTt"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap above to start recognising" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mn5-OZ-DFT">
+                                <rect key="frame" x="9" y="525" width="357" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="aht-sK-cuU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaB-dd-BvX">
+                                <rect key="frame" x="9" y="599" width="357" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8QV-Ce-hh1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="PaB-dd-BvX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="9" id="1Jk-12-9ew"/>
+                            <constraint firstItem="Mn5-OZ-DFT" firstAttribute="top" secondItem="iZr-jO-xeC" secondAttribute="bottom" constant="8" id="7ag-3Z-RYm"/>
                             <constraint firstAttribute="trailing" secondItem="iZr-jO-xeC" secondAttribute="trailing" id="QYx-vz-WOl"/>
+                            <constraint firstAttribute="trailing" secondItem="Mn5-OZ-DFT" secondAttribute="trailing" constant="9" id="S6N-IV-RFx"/>
+                            <constraint firstItem="PaB-dd-BvX" firstAttribute="top" secondItem="Mn5-OZ-DFT" secondAttribute="bottom" constant="8" id="bMT-9Y-yRC"/>
+                            <constraint firstItem="Mn5-OZ-DFT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="9" id="e3q-8l-bV2"/>
+                            <constraint firstAttribute="trailing" secondItem="PaB-dd-BvX" secondAttribute="trailing" constant="9" id="kQE-Mc-RXZ"/>
                             <constraint firstItem="iZr-jO-xeC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lxN-gG-nOc"/>
                             <constraint firstItem="iZr-jO-xeC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="xlO-PH-B5f"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="iZr-jO-xeC" id="B1q-Tm-k7Y"/>
+                        <outlet property="recognisedObjectLabel" destination="Mn5-OZ-DFT" id="rsU-eZ-Da5"/>
+                        <outlet property="recongisedObjectPercentage" destination="PaB-dd-BvX" id="ioM-VJ-MEb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

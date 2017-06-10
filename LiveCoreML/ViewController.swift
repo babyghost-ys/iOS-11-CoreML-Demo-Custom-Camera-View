@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var captureDevice:AVCaptureDevice?
 
     @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var recognisedObjectLabel: UILabel!
+    @IBOutlet weak var recongisedObjectPercentage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func tapToRecognise(_ sender: Any) {
+        recognisedObjectLabel.text = "Please wait..."
         if let videoConnection = stillImageOutput.connection(with: AVMediaType.video) {
             stillImageOutput.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (CMSampleBuffer, Error) in
                 if let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(CMSampleBuffer!) {
@@ -75,9 +78,11 @@ class ViewController: UIViewController {
     }
     
     func displayPredictions(request: VNRequest, error: Error?) {
-        // Make sure we have a result
         guard let results = request.results as? [VNClassificationObservation]
             else { fatalError("Bad prediction") }
+        
+        recognisedObjectLabel.text = results[0].identifier
+        recongisedObjectPercentage.text = "Precentage: \(results[0].confidence * 100)%"
     }
 
 
