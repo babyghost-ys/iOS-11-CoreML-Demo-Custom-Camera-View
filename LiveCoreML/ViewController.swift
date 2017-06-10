@@ -25,6 +25,23 @@ class ViewController: UIViewController {
         beginSession()
     }
     
+    
+    @IBAction func tapToRecognise(_ sender: Any) {
+        
+        if let videoConnection = stillImageOutput.connection(with: AVMediaType.video) {
+            
+            stillImageOutput.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (CMSampleBuffer, Error) in
+                if let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(CMSampleBuffer!) {
+                    
+                    if let cameraImage = UIImage(data: imageData) {
+                        
+                        print("someImage doing...")
+                    }
+                }
+            })
+        }
+    }
+    
     func beginSession() {
         
         do {
