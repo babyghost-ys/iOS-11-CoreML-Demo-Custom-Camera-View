@@ -1,6 +1,4 @@
-# CoreML-Demo-Custom-Camera-View-
-
-iOS 11 Core ML Demo with Custom Camera View (Machine Learning)
+# iOS 11 Core ML Demo with Custom Camera View (Machine Learning)
 
 To play:
 Clone the repo. Run the app with Xcode 9 and iOS 11 device.
